@@ -43,10 +43,10 @@ public class App {
         System.out.println(ce1);
         System.out.println();
 
+        ContaPoupanca.setTaxaSaque(0.25);
 
         ContaPoupanca cp1 = new ContaPoupanca(4698, 32345, 0, 0.00, "Conta Poupanca");
 
-        cp1.setTaxasaque(0.15);
 
         System.out.println(cp1);
         if (cp1.deposito(500.00)){

@@ -2,8 +2,8 @@ package exercicios.exercicio03;
 
 public class ContaPoupanca extends Conta{
     private String tipo;
-    private double taxasaque;
-    
+    private static double taxasaque;
+
     
     public ContaPoupanca(int numAgencia, int numConta, int digitoConta, double saldo, String tipo){
 
@@ -16,9 +16,9 @@ public class ContaPoupanca extends Conta{
         return super.toString() + " Tipo: " + tipo;
     }
 
-    public void setTaxasaque(double taxasaque) {
-        if (taxasaque > 0){
-            this.taxasaque = taxasaque;
+    public static void setTaxaSaque(double taxa) {
+        if (taxa > 0){
+            taxasaque = taxa;
         }
     }
 
