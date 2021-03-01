@@ -44,7 +44,9 @@ public class App {
         System.out.println();
 
 
-        ContaPoupanca cp1 = new ContaPoupanca(4698, 32345, 0, 1000.00, "Conta Poupanca");
+        ContaPoupanca cp1 = new ContaPoupanca(4698, 32345, 0, 0.00, "Conta Poupanca");
+
+        cp1.setTaxasaque(0.15);
 
         System.out.println(cp1);
         if (cp1.deposito(500.00)){
@@ -53,7 +55,7 @@ public class App {
             System.out.println("Falha na operação de depósito.");
         }
 
-        if (cp1.saque(700.00)){
+        if (cp1.saque(500.00)){
             System.out.println("Saque realizado.");
         }else{
             System.out.println("Saldo insuficiente.");
