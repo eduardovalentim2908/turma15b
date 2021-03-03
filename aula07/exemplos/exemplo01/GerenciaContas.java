@@ -45,14 +45,11 @@ public class GerenciaContas {
         }
                 
     public String exibirSaldo(int numeroConta){
-        for(Conta conta : mapadecontas){
-            if(conta.getNumero() == numeroConta){
+        Conta conta = mapadecontas.get(numeroConta);
+            if(conta != null){
                 return conta.toString();
             }
-        }
-        return "Conta não encontrada";
-
+            return "Conta não encontrada";       
     }
-
 
 }
