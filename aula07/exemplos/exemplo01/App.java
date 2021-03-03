@@ -1,6 +1,5 @@
 package exemplos.exemplo01;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -9,10 +8,11 @@ public class App {
        int opcao;
        int numeroConta;
        double limite, valor;
-       ContaCorrente cc = null;
-       ContaEspecial ce = null;
-       ArrayList<ContaCorrente> listaDeContas = new ArrayList<>();
        
+
+
+       GerenciaContas contas = new GerenciaContas();
+
        do{
            System.out.println("1 - Nova Conta Corrente");
            System.out.println("2 - Nova Conta Especial");
@@ -27,11 +27,9 @@ public class App {
 
            switch (opcao) {
                case 1:
-                   System.out.println("Digite os dados da conta (Agencia, Numero e Digito).");
+                   System.out.println("Digite o numero da conta.");
                    numeroConta = teclado.nextInt();
-                   cc = new ContaCorrente(numeroConta);
-                   listaDeContas.add(cc);
-                   System.out.println(cc);
+                   contas.novaContaCorrente(numeroConta);
                    break;
            
                case 2:
@@ -40,36 +38,56 @@ public class App {
                    numeroConta = teclado.nextInt();
                    System.out.println("Digite o limite da conta.");
                    limite = teclado.nextDouble();
-                   ce = new ContaEspecial(numeroConta, limite);
-
+                   contas.novaContaEspecial(numeroConta, limite);
                    break;
         
                 case 3:
+                                   
+                    System.out.println("Digite o numero da conta.");
+                    numeroConta = teclado.nextInt();
+                    contas.novaContaPoupanca(numeroConta);
                 
-                    break;
+                break;
         
                 case 4:
-                    System.out.println("Informe o valor do deposito.");
+                    System.out.println("Digite o numero da conta.");
+                    numeroConta = teclado.nextInt();
+                    System.out.println("Informe o valor do depósito.");
                     valor = teclado.nextDouble();
-                    if (cc.deposito(valor)){
-                        System.out.println("Deposito realizado.");
-                    }else {
-                        System.out.println("Falha na operação.");
-                    }
-                    break;
+                       
+                        if (contas.deposito(numeroConta, valor)){
+                            System.out.println("Deposito realizado.");
+                        }else {
+                                System.out.println("Falha na operação.");
+                        }
+                        break;
+
+                    
         
                 case 5:
+                System.out.println("Digite o numero da conta.");
+                numeroConta = teclado.nextInt();   
+                System.out.println("Informe o valor do saque.");
+                valor = teclado.nextDouble();
                 
-                    break;
-        
-       
+                        if (contas.saque(numeroConta, valor)){
+                            System.out.println("Saque realizado.");
+                        }else {
+                            System.out.println("Falha na operação.");
+                        }
+                        break;
+                    
+
                 case 6:
-                    System.out.println(listaDeContas);
-                    break;
+                    System.out.println("Digite o numero da conta.");
+                    numeroConta = teclado.nextInt();
+                    System.out.println(contas.exibirSaldo(numeroConta));
+                   
+                
+                break;  
         
                 case 7:
-                
-                    break;
+                                    break;
         
                     default:
                     System.out.println("Opção invalida.");
