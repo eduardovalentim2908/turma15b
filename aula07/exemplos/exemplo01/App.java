@@ -1,66 +1,83 @@
 package exemplos.exemplo01;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class App {
     public static void main(String[] args) {
-        Conta c1 = new Conta(3827, 42537, 3, 3475.24);
+       Scanner teclado = new Scanner(System.in);
+       int opcao;
+       int numeroConta;
+       double limite, valor;
+       ContaCorrente cc = null;
+       ContaEspecial ce = null;
+       ArrayList<ContaCorrente> listaDeContas = new ArrayList<>();
        
-        ContaCorrente cc1 = new ContaCorrente(3465, 32768, 0, 5000.00, "Conta Corrente");
+       do{
+           System.out.println("1 - Nova Conta Corrente");
+           System.out.println("2 - Nova Conta Especial");
+           System.out.println("3 - Nova Conta Poupança");
+           System.out.println("4 - Depósito");
+           System.out.println("5 - Saque");
+           System.out.println("6 - Saldo");
+           System.out.println("7 - Sair");
+           System.out.println("Digite a opção desejada.");
+           opcao = teclado.nextInt();
+
+
+           switch (opcao) {
+               case 1:
+                   System.out.println("Digite os dados da conta (Agencia, Numero e Digito).");
+                   numeroConta = teclado.nextInt();
+                   cc = new ContaCorrente(numeroConta);
+                   listaDeContas.add(cc);
+                   System.out.println(cc);
+                   break;
+           
+               case 2:
+        
+                   System.out.println("Digite o numero da conta.");
+                   numeroConta = teclado.nextInt();
+                   System.out.println("Digite o limite da conta.");
+                   limite = teclado.nextDouble();
+                   ce = new ContaEspecial(numeroConta, limite);
+
+                   break;
+        
+                case 3:
+                
+                    break;
+        
+                case 4:
+                    System.out.println("Informe o valor do deposito.");
+                    valor = teclado.nextDouble();
+                    if (cc.deposito(valor)){
+                        System.out.println("Deposito realizado.");
+                    }else {
+                        System.out.println("Falha na operação.");
+                    }
+                    break;
+        
+                case 5:
+                
+                    break;
+        
        
-        c1.deposito(557.30);
-        c1.saque(948.75);
-        System.out.println(c1);
-        System.out.println();
-
-        System.out.println(cc1);
-        if (cc1.deposito(1000.00)){
-            System.out.println("Deposito realizado.");    
-        }else{
-            System.out.println("Falha na operação de depósito.");
+                case 6:
+                    System.out.println(listaDeContas);
+                    break;
+        
+                case 7:
+                
+                    break;
+        
+                    default:
+                    System.out.println("Opção invalida.");
+                    break;
         }
 
-        if (cc1.saque(1500.00)){
-            System.out.println("Saque realizado.");
-        }else{
-            System.out.println("Saldo insuficiente.");
-        }
-        System.out.println(cc1);
-        System.out.println();
-
-        ContaEspecial ce1 = new ContaEspecial(4398, 39845, 2, 18000.00, "Conta Especial");
-
-        System.out.println(ce1);
-        if (ce1.deposito(15000.00)){
-            System.out.println("Deposito realizado.");    
-        }else{
-            System.out.println("Falha na operação de depósito.");
-        }
-
-        if (ce1.saque(35000.00)){
-            System.out.println("Saque realizado.");
-        }else{
-            System.out.println("Saldo insuficiente.");
-        }
-        System.out.println(ce1);
-        System.out.println();
-
-        ContaPoupanca.setTaxaSaque(0.25);
-
-        ContaPoupanca cp1 = new ContaPoupanca(4698, 32345, 0, 0.00, "Conta Poupanca");
-
-
-        System.out.println(cp1);
-        if (cp1.deposito(500.00)){
-            System.out.println("Deposito realizado.");    
-        }else{
-            System.out.println("Falha na operação de depósito.");
-        }
-
-        if (cp1.saque(400.00)){
-            System.out.println("Saque realizado.");
-        }else{
-            System.out.println("Saldo insuficiente.");
-        }
-        System.out.println(cp1);
-
-    }
+        } while(opcao != 7);
+       teclado.close();
+    }     
+        
 }

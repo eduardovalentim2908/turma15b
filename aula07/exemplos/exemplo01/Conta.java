@@ -1,46 +1,74 @@
 package exemplos.exemplo01;
 
 public class Conta {
-    private int numAgencia, numConta, digitoConta; 
+    private int numero;
+
     private double saldo;
-    
-   
-    public Conta(int numAgencia, int numConta, int digitoConta, double saldo){
-        this.numAgencia = numAgencia;
-        this.numConta = numConta;
-        this.digitoConta = digitoConta;
-        this.saldo = saldo;
-    
-        
-    }
-    
-    public boolean deposito(double valor){
-        if (valor > 0){
-            saldo += valor;
-            return true;
-        }
-        return false;
-    }
-    
-    public double getSaldo(){
-        return saldo;
+
+
+
+    public Conta(int numero) {
+
+        this.numero = numero;
+
     }
 
-    public boolean saque(double valor){
-        if (saldo > 0){
+
+
+    public boolean deposito(double valor) {
+
+        if (valor > 0) {
+
+            saldo += valor; // saldo = saldo + valor;
+
+            return true;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    public boolean saque(double valor) {
+
+        if(valor > 0) {
+
             saldo -= valor;
+
             return true;
+
         }
+
         return false;
+
     }
 
 
 
-   public String toString(){
-    return "Agencia: " + numAgencia + " Conta: " + numConta + "-" + digitoConta + " Saldo: R$ " + saldo;
+    public double getSaldo() {
 
-}
+        return saldo;
+
+    }
 
 
+
+    public int getNumero() {
+
+        return numero;
+
+    }
+
+    
+
+    @Override
+
+    public String toString() {
+
+        return numero + ": " + saldo;
+
+    }
    
 }

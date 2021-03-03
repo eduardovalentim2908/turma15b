@@ -1,38 +1,41 @@
 package exemplos.exemplo01;
 
 public class ContaCorrente extends Conta{
-    String tipo;
-    private final double taxadep = 0.10;
+    private final double TAXA_DEPOSITO = 0.1;
 
-    public ContaCorrente(int numAgencia, int numConta, int digitoConta, double saldo, String tipo){
 
-        super(numAgencia, numConta, digitoConta, saldo);
-        this.tipo = tipo;
-        
+
+    public ContaCorrente(int numero) {
+
+        super(numero);
+
     }
-        
-    public String toString(){
-        return super.toString() + " Tipo: " + tipo;
-    }
+
+
 
     @Override
+
     public boolean deposito(double valor) {
-        // TODO Auto-generated method stub
-        return super.deposito(valor - taxadep);
+
+        return super.deposito(valor - TAXA_DEPOSITO);
+
     }
 
 
+
     @Override
+
     public boolean saque(double valor) {
-        // TODO Auto-generated method stub
-        if (getSaldo() >= valor){
-            return super.saque(valor);        
+
+        if (getSaldo() >= valor) {  // tem saldo suficiente?
+
+            return super.saque(valor);
+
         }
+
         return false;
 
     }
-
-        
 
     
     }
