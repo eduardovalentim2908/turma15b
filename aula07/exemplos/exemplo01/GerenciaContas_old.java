@@ -1,51 +1,54 @@
 package exemplos.exemplo01;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
-public class GerenciaContas {
-    private HashMap<Integer, Conta> mapadecontas;
+public class GerenciaContas_old {
+    private ArrayList<Conta> listaDeContas;
 
-    public GerenciaContas(){
-        mapadecontas = new HashMap<>();
+    public GerenciaContas_old(){
+        listaDeContas = new ArrayList<>();
 
     }
 
     public void novaContaCorrente(int numeroConta){
         ContaCorrente cc = null;
         cc = new ContaCorrente(numeroConta);
-        mapadecontas.put(numeroConta, cc);
+        listaDeContas.add(cc);
     }
 
     public void novaContaEspecial(int numeroConta, double limite){
         ContaEspecial ce = null;
         ce = new ContaEspecial(numeroConta, limite);
-        mapadecontas.put(numeroConta, ce); 
+        listaDeContas.add(ce); 
     }
 
     public void novaContaPoupanca(int numeroConta){
         ContaPoupanca cp = null;
         cp = new ContaPoupanca(numeroConta);
-        mapadecontas.put(numeroConta, cp);
+        listaDeContas.add(cp);
     }
 
     public boolean deposito(int numeroConta, Double valor){
-        Conta conta = mapadecontas.get(numeroConta);
-            if(conta != null){
-                return conta.deposito(valor);    
+        for(Conta conta : listaDeContas){
+            if(conta.getNumero() == numeroConta){
+                return conta.deposito(valor);
             }
-            return false;
         }
+        return false;
+    }
 
     public boolean saque(int numeroConta, Double valor){
-        Conta conta = mapadecontas.get(numeroConta);
-            if(conta != null){
+        for(Conta conta : listaDeContas){
+            if(conta.getNumero() == numeroConta){
                 return conta.saque(valor);
             }
-                return false;        
         }
-                
+        return false;
+
+    }
+
     public String exibirSaldo(int numeroConta){
-        for(Conta conta : mapadecontas){
+        for(Conta conta : listaDeContas){
             if(conta.getNumero() == numeroConta){
                 return conta.toString();
             }
