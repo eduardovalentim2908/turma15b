@@ -52,12 +52,16 @@ function validaResposta(restultado) {
 function exibirDados(compras) {
     console.log(compras)
 
-    let table = 'Descrição - Valor - Data <br>'
+    let table = '<table> <tr> <th>Descrição</th> <th>Valor</th> <th>Data</th> </tr>'
     for (let index = 0; index < compras.length; index++) {
-        table += compras[index].descricao + ' - ' + compras[index].valor + ' - ' + compras[index].data + '<br>';
+        let data = new Date(compras[index].data)
+        let dataformatada = data.toLocaleDateString("pt-BR");
+        table += `<tr> <td> ${compras[index].descricao} </td><td> ${compras[index].valor} </td><td>${dataformatada} </td> </tr>`;
+        //table += compras[index].descricao + ' - ' + compras[index].valor + ' - ' + compras[index].data + '<br>';
      
     }
     
+    table += '</table>'
     document.getElementById("saida").innerHTML = table
 
 }
