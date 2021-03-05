@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.valentim.spring02.dto.UsuarioDTO;
+import br.valentim.spring02.model.Compra;
 import br.valentim.spring02.model.Usuario;
 import br.valentim.spring02.repository.UsuarioRepo;
 
@@ -21,7 +22,7 @@ import br.valentim.spring02.repository.UsuarioRepo;
 @RestController
 @CrossOrigin("*") //Requisicoes de qualquer origem.
 @RequestMapping("/user")
-public class UsuarioController {
+public class UsuarioController{
     
     @Autowired
     private UsuarioRepo repo;
@@ -37,6 +38,20 @@ public class UsuarioController {
 
         return ResponseEntity.notFound().build(); // Response Not Founf 404
     }
+
+    @GetMapping("/compras/{id}") // {id} Nome da variavel.
+    public ResponseEntity<List<Compra>> obterComprasDoUsuarioPorId(@PathVariable int id){
+        Usuario usuarioEncontrado = repo.findById(id).orElse(null); // FindbyId busca pela chave primaria
+        
+        if(usuarioEncontrado != null){
+            List<Compra> compras = usuarioEncontrado.getCompra();
+            return ResponseEntity.ok(compras); //Response OK 200
+        }
+
+        return ResponseEntity.notFound().build(); // Response Not Founf 404
+    }
+
+        
     
     @GetMapping("/all")
     public ResponseEntity<List<Usuario>> listarUsuarios(){
@@ -56,4 +71,25 @@ public class UsuarioController {
             return ResponseEntity.status(404).build();
         
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<UsuarioDTO> login(@RequestBody Usuario user){
+        Usuario userFound = repo.findByEmailOrCpf(user.getEmail(), user.getCpf());
+            if(userFound != null){
+                if (user.getSenha().equals(userFound.getSenha())){
+                    UsuarioDTO userDTO= new UsuarioDTO(userFound);
+                    return ResponseEntity.ok(userDTO);
+
+                }  
+            }
+            return ResponseEntity.status(404).build();
+        
+    }
+
+  
+
+
+
+
+
 }

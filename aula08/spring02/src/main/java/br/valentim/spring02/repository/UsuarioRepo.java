@@ -7,5 +7,7 @@ import br.valentim.spring02.model.Usuario;
 //CRUD = Create, Read, Update and Delete (DB)
 public interface UsuarioRepo extends CrudRepository<Usuario, Integer>{
     public Usuario findByEmailAndSenha(String email, String senha);
+    public Usuario findByEmailOrCpf(String email, String cpf);
+
     
 }

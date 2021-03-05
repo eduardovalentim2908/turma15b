@@ -10,5 +10,4 @@ public interface CompraRepo extends CrudRepository<Compra, Integer>{
     Compra findByid(int id);
     public List<Compra> findByvalorGreaterThan(double valor);
 
-    
 }

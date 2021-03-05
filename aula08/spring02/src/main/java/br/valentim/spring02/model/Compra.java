@@ -1,5 +1,7 @@
 package br.valentim.spring02.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,6 +29,9 @@ public class Compra {
     
     @Column(name = "valor", nullable = false)    
     private double valor;
+
+    @Column(name = "data")
+    private LocalDate data;
 
 
     @ManyToOne
@@ -58,11 +63,19 @@ public class Compra {
             this.id = id;
         }
 
-        public Usuario getUsuario() {
-            return usuario;
-        }
+//        public Usuario getUsuario() {
+ //           return usuario;
+  //      }
 
         public void setUsuario(Usuario usuario) {
             this.usuario = usuario;
+        }
+
+        public LocalDate getData() {
+                return data;
+        }
+
+        public void setData(LocalDate data) {
+                this.data = data;
         }
 }
