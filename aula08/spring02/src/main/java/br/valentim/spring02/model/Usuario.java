@@ -1,11 +1,16 @@
 package br.valentim.spring02.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity //Classe mapeada no DB
 @Table(name="usuario")
@@ -30,6 +35,9 @@ public class Usuario {
     @Column(name="email", length = 30, nullable = false)
     private String email;
 
+    @OneToMany(mappedBy = "usuario")
+    @JsonIgnoreProperties("usuario")
+    private List<Compra> compra;
 
     public int getId() {
         return id;
@@ -69,6 +77,14 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Compra> getCompra() {
+        return compra;
+    }
+
+    public void setCompra(List<Compra> compra) {
+        this.compra = compra;
     }
 
     
