@@ -56,3 +56,25 @@
          font-weight: bolder;
          font-size: 12px;
      }
+     /* Criando classe para a pagina em BootStrap*/
+     
+     .container {
+         border: 3px solid brown;
+         width: 100%;
+     }
+     
+     .div {
+         background-color: yellow;
+     }
+     
+     .div2 {
+         background-color: red;
+     }
+     
+     .div3 {
+         background-color: yellowgreen;
+     }
+     
+     .div4 {
+         background-color: blue;
+     }
