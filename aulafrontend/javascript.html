@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS </title>
+
+    <!-- Criando uma página com JS-->
+    <script>
+        // alert("Olá sejam todos bem vindos");
+
+
+        /* var empresa ="Gama Academy";
+        var mensagem = "Olá sejam todos bem vindos ";
+        alert(mensagem+empresa); */
+
+        /* var nome = prompt("Olá seja bem vindo, qual o seu nome?");
+        alert ("Muito prazer "+nome+ " vamos fazer o curso juntos"); */
+
+        function teste() {
+            alert("Oieeeeeee");
+        }
+
+        function validar() {
+            var nome = contato.nome.value;
+            var email = contato.email.value;
+
+            // alert(nome+" "+email);
+
+            if (nome == "") {
+                alert("O preenchimento do campo Nome é Obrigatório");
+                contato.nome.focus();
+                return false;
+            }
+
+            if (nome.length <= 3) {
+                alert("Por favor digite o seu nome completo com sobrenome");
+                contato.nome.focus();
+                return false;
+            }
+
+            if (email == "") {
+                alert("por favor preencha o campo email, pois ele é obrigatório");
+                contato.email.focus();
+                return false;
+            }
+
+            if (email.indexOf('@') == -1) {
+                alert("Digite um @ no seu email");
+                contato.email.focus();
+                return false;
+            }
+
+            alert("Olá " + nome + " seja bem vindo, iremos enviar o nosso portifólio de cursos para o email " + email);
+
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <!--
+        <h5>Olá Sejam bem vindos</h5>
+        <input type="button" onclick="teste()" value="Click">-->
+
+
+    <form id="contato" method="POST">
+        Nome:<input type="text" name="nome"><br><br> Email:
+        <input type="text" name="email"><br><br>
+
+        <input type="submit" onclick="return validar()" value="Enviar">
+
+
+    </form>
+
+
+</body>
+
+</html>
